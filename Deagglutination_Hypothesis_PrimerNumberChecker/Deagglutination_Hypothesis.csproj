@@ -55,5 +55,9 @@
       <Name>Deagglutination_Class</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Deagglutination Hypothesis.exe" />
+    <Content Include="Resources\Deagglutination_Class.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
