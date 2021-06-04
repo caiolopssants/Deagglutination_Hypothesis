@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1321
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deagglutination_Hypothesis", "Deagglutination_Hypothesis_PrimerNumberChecker\Deagglutination_Hypothesis.csproj", "{5A33C187-3EFD-43BA-9A92-15A6141CFE41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deagglutination_Hypothesis", "Deagglutination_Hypothesis\Deagglutination_Hypothesis.csproj", "{5A33C187-3EFD-43BA-9A92-15A6141CFE41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deagglutination_Class", "Deagglutination_Class\Deagglutination_Class.csproj", "{D2E5ED09-E5DF-46B7-988C-6AF7DBA0EBC3}"
 EndProject
