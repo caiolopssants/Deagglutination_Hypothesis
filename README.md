@@ -1,16 +1,16 @@
 # Deagglutination_Hypothesis
 
 * a) Deagglutination_Hypothesis
-  * a.1) Program.cs -> Console application code
-  * a.2) Resources -> Resources directory
+  * a.1) [Program.cs](https://github.com/caiolopssants/Deagglutination_Hypothesis/blob/master/Deagglutination_Hypothesis/Program.cs) -> Console application code
+  * a.2) [Resources](https://github.com/caiolopssants/Deagglutination_Hypothesis/tree/master/Deagglutination_Hypothesis/Resources) -> Resources directory
     * a.2.a) Deagglutination Hypothesis.exe -> Executable application
     * a.2.b) Deagglutination_Class.dll -> Library
 * b) Deagglutination_Class
-  * b.1) Deagglutination_Class.cs -> Deagglutination class code
+  * b.1) [Deagglutination_Class.cs](https://github.com/caiolopssants/Deagglutination_Hypothesis/blob/master/Deagglutination_Class/Deagglutination_Class.cs) -> Deagglutination class code
 
 
 
-# a.1) Program.cs
+## a.1) Program.cs
 
 * Main(string[]): Main method  
   * Run a loop using a for struct, where:
@@ -22,9 +22,12 @@
 * IsReallyPrime(uint): Prime number confirmation method  
   * Run a simple prime number verification process.
 
-# b.1) Deagglutination_Class.cs
+## b.1) Deagglutination_Class.cs
   
   * IsPrimeNumber(uint): Process where:
     * Will be excluded prime numbers to optimizing returned value speed, using basic prime number verify process;
     * Wheter the basic verification process do not work, will be applying process to apply the deagglutination hypothesis on received argument.
   * ApplyDeagglutination(uint, uint): Method to verify a possible prime number using the deagglutination hypothesis    
+
+
+
