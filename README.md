@@ -13,21 +13,36 @@
 ## a.1) Program.cs
 
 * Main(string[]): Main method  
-  * Run a loop using a for struct, where:
-    - Begin with 0 (Type: uint32);
-    - Run the IsPrimeNumber() method, from Deagglutination_Class.Deagglutination class;
-    - Run the IsReallyPrime() method, to confirm the result from previus process
-    - End with 4294967294 (Type: uint32).
-    
-* IsReallyPrime(uint): Prime number confirmation method  
+  * Options:
+    * a) Show all number (red - Prime number || white - non prime number);
+    * b) Show prime numbers only;
+    * c) Verify value;
+  ### a) Show all number (red - Prime number || white - non prime number)
+   * Run a loop using a for struct, where:  
+       - Begin with 0 (Type: uint64 or ulong);
+       - Run the IsPrimeNumber() method, from Deagglutination_Class.Deagglutination class;
+       - Run the IsReallyPrime() method, to confirm the result from previus process (**desactived**)
+       - End with 18446744073709551614 (Type: uint64 or ulong).
+   * If the current value be a prime number, will be writed with a red color, otherwise, white color;
+   * For each non prime number, will be added a '.'  until a prime number be found.
+   ### b) Show prime numbers only
+   * Run a loop using a for struct, where:  
+       - Begin with 0 (Type: uint64 or ulong);
+       - Run the IsPrimeNumber() method, from Deagglutination_Class.Deagglutination class;
+       - Run the IsReallyPrime() method, to confirm the result from previus process (**desactived**)
+       - End with 18446744073709551614 (Type: uint64 or ulong).
+   ### c) Verify value
+   * User will inform a value and will be return wheter or not are a prime number 
+ 
+* IsReallyPrime(ulong): Prime number confirmation method  
   * Run a simple prime number verification process.
 
 ## b.1) Deagglutination_Class.cs
   
-  * IsPrimeNumber(uint): Process where:
+  * IsPrimeNumber(ulong): Process where:
     * Will be excluded prime numbers to optimizing returned value speed, using basic prime number verify process;
     * Wheter the basic verification process do not work, will be applying process to apply the deagglutination hypothesis on received argument.
-  * ApplyDeagglutination(uint, uint): Method to verify a possible prime number using the deagglutination hypothesis    
+  * ApplyDeagglutination(ulong, ulong): Method to verify a possible prime number using the deagglutination hypothesis    
 
 
 
