@@ -9,39 +9,120 @@ namespace Deagglutination_Hypothesis
 {
     class Program
     {
-        static Random rnd = new Random();
-        static int max = (int)(uint.MaxValue / 850);
         static void Main(string[] args)
         {
-            for (uint i = 0; i<uint.MaxValue; i++/*i+= (uint)rnd.Next(0, max)*/)
+            byte optionIndex = 0;
+
+        OPTIONS:
+            try
             {
-                try
-                {
-                    var answer = Deagglutination.IsPrimeNumber(i);
-                    if (answer.Item1)
+                Console.WriteLine("Choice one option: " +
+                    "\n 1 - Show all number (red - Prime number || white - non prime number)" +
+                    "\n 2 - Show prime numbers only" +
+                    "\n 3 - Verify value" +
+                    "\n");
+                Console.Write("Option: ");
+                optionIndex = Convert.ToByte(Console.ReadLine());
+
+            }
+            catch
+            {
+                Console.WriteLine("Invalid Value!");
+                Console.ReadKey();
+                Console.Clear();
+                goto OPTIONS;
+            }
+
+
+
+            switch (optionIndex)
+            {
+                case 1:
+                    string emptySpace = string.Empty;
+                    ulong emptySpaceCount = 1;
+                    for (ulong i = 0; i < ulong.MaxValue; i++)
                     {
-                        if (/*true||*/IsReallyPrime(i)) //To confirm if the returned value from Deagglutination.IsPrimeNumber() method is a real prime number, remove the "true||" term and compile
+                        try
                         {
-                            Console.WriteLine($"Value: {i}\n    Answer: {answer}");
+                            var answer = Deagglutination.IsPrimeNumber(i);
+                            if (answer.Item1)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine(i);
+                                Console.ForegroundColor = ConsoleColor.White;
+                                emptySpace = string.Empty;
+                                emptySpaceCount = 1;
+                            }
+                            else
+                            {
+                                for (ulong j = 0; j < emptySpaceCount; j++)
+                                    emptySpace += ".";
+                                Console.WriteLine($"{emptySpace}{i}");
+                            }
+                            //Console.ReadKey();
+                            System.Threading.Thread.Sleep(41);
+                        }
+                        catch (Exception error)
+                        {
+                            Console.WriteLine($"Value: {i}\n    Error: {error.Message}");
                             //Console.ReadKey();
                         }
-                        else
+                    }
+                    break;
+                case 2:
+                    for (ulong i = 0; i < ulong.MaxValue; i++)
+                    {
+                        try
                         {
-                            Console.WriteLine($"Value: {i}\n    Answer: (False, )");
-                            Console.ReadKey();
+                            var answer = Deagglutination.IsPrimeNumber(i);
+                            if (answer.Item1)
+                            {                                
+                                Console.WriteLine(
+                                    answer.Item1 /*&& IsReallyPrime(i)*/ ? 
+                                    $"Value: {i}\n    Is prime number: {answer.Item1}" : 
+                                    $"Value: {i}\n    Is prime number: {answer.Item1}\n    Divisor value: {answer.Item2}"
+                                    );
+                                //Console.ReadKey();
+                            }
+
+                        }
+                        catch (Exception error)
+                        {
+                            Console.WriteLine($"Value: {i}\n    Error: {error.Message}");
+                            //Console.ReadKey();
                         }
                     }
-                }
-                catch(Exception error)
-                {
-                    Console.WriteLine($"Value: {i}\n    Error: {error.Message}");
-                    //Console.ReadKey();
-                }
+                    break;
+                case 3:
+                VERIFY:
+                    try
+                    {
+                        Console.Clear();
+                        Console.Write("Value (Max: 18.446.744.073.709.551.615): ");
+                        var answer = Deagglutination.IsPrimeNumber(Convert.ToUInt64(Console.ReadLine()));
+                        Console.WriteLine(
+                            answer.Item1 /*&& IsReallyPrime(i)*/ ?
+                            $"Is prime number: {answer.Item1}" : 
+                            $"Is prime number: {answer.Item1}\nDivisor value: {answer.Item2}"
+                            );                        
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Invalid Value!");
+                        
+                        goto VERIFY;
+                    }
+                    break;
+                default:
+                    goto OPTIONS;
+
             }
             Console.ReadKey();
+            Console.Clear();
+            goto OPTIONS;
         }
 
-        private static bool IsReallyPrime(uint value)
+        private static bool IsReallyPrime(ulong value)
         {
             if (value == 0)
                 return true;
@@ -57,13 +138,14 @@ namespace Deagglutination_Hypothesis
                 return true;
             else if (value % 9 == 0)
                 return true;
-            
-            for (uint i = value-1; i>2;i--)
+
+            for (ulong i = value - 1; i > 2; i--)
             {
-                if(value % i == 0)
+                if (value % i == 0)
                     return false;
             }
-            return true;            
+            return true;
         }
     }
 }
+

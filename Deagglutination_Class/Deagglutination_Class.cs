@@ -8,8 +8,11 @@ namespace Deagglutination_Class
 {
     public class Deagglutination
     {
-        public static Tuple<bool, string> IsPrimeNumber(uint number)
+        public static Tuple<bool, string> IsPrimeNumber(ulong number)
         {
+            if (number == 1 || number == 2 || number == 3 || number == 5 || number == 7 || number == 9)
+                return new Tuple<bool, string>(true, null);
+
             if (number == 0)
                 return new Tuple<bool, string>(false, "infinite");
             else if (number == 1)
@@ -26,13 +29,13 @@ namespace Deagglutination_Class
                 return new Tuple<bool, string>(false, 9.ToString());
 
 
+            
 
-
-            string value = number.ToString();            
-            uint a = Convert.ToUInt32(value.Substring(0, value.Length - 1));//converter os algarismo, até o penúltimo algarismo
-            uint b = Convert.ToUInt32(value[value.Length - 1].ToString());//converte o último algarismo     
-            uint initalA = a;//Consersvando argumento 'a' original
-            uint initialB = b;//Consersvando argumento 'b' original
+            string value = number.ToString();
+            ulong a = Convert.ToUInt64(value.Substring(0, value.Length - 1));//converter os algarismo, até o penúltimo algarismo
+            ulong b = Convert.ToUInt64(value[value.Length - 1].ToString());//converte o último algarismo     
+            ulong initalA = a;//Consersvando argumento 'a' original
+            ulong initialB = b;//Consersvando argumento 'b' original
             Tuple<bool, string> answer = null;
 
             if (b == 1)//caso b seja igual a 1, deverá ser incrementado 10 para evitar falso positivo, quando chamado o método IsPrimeNumber
@@ -111,10 +114,10 @@ namespace Deagglutination_Class
             }
         }
 
-        static Tuple<bool, string> ApplyDeagglutination(uint a, uint b)//método para verificar se trata de um numero primo de acordo com a hipótese da desaglutinação
+        static Tuple<bool, string> ApplyDeagglutination(ulong a, ulong b)//método para verificar se trata de um numero primo de acordo com a hipótese da desaglutinação
         {
-            uint initalA = a;//Consersvando argumento 'a' original
-            uint initialB = b;//Consersvando argumento 'b' original
+            ulong initalA = a;//Consersvando argumento 'a' original
+            ulong initialB = b;//Consersvando argumento 'b' original
             //Console.WriteLine($"{a}   {b}");
             while (a != 0 && a % b != 0 && a > b)//caso 'a' seja diferente de 0, a divisão entre 'a' e 'b' *GERE* 'restos' *E* 'a', seja maior que 'b'. Faça:
             {
