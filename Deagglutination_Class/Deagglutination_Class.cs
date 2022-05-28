@@ -8,9 +8,9 @@ namespace Deagglutination_Class
 {
     public class Deagglutination
     {
-        public static Tuple<bool, string> IsPrimeNumber(ulong number)
+        public static Tuple<bool, string> IsPrimeNumber(double number)
         {
-            if (number == 1 || number == 2 || number == 3 || number == 5 || number == 7 || number == 9)
+            if (number == 1 || number == 2 || number == 3 || number == 5 || number == 7)
                 return new Tuple<bool, string>(true, null);
 
             if (number == 0)
@@ -25,17 +25,13 @@ namespace Deagglutination_Class
                 return new Tuple<bool, string>(false, 5.ToString());
             else if (number % 7 == 0)
                 return new Tuple<bool, string>(false, 7.ToString());
-            else if (number % 9 == 0)
-                return new Tuple<bool, string>(false, 9.ToString());
-
-
             
 
             string value = number.ToString();
-            ulong a = Convert.ToUInt64(value.Substring(0, value.Length - 1));//converter os algarismo, até o penúltimo algarismo
-            ulong b = Convert.ToUInt64(value[value.Length - 1].ToString());//converte o último algarismo     
-            ulong initalA = a;//Consersvando argumento 'a' original
-            ulong initialB = b;//Consersvando argumento 'b' original
+            double a = Convert.ToUInt64(value.Substring(0, value.Length - 1));//converter os algarismo, até o penúltimo algarismo
+            double b = Convert.ToUInt64(value[value.Length - 1].ToString());//converte o último algarismo     
+            double initalA = a;//Consersvando argumento 'a' original
+            double initialB = b;//Consersvando argumento 'b' original
             Tuple<bool, string> answer = null;
 
             if (b == 1)//caso b seja igual a 1, deverá ser incrementado 10 para evitar falso positivo, quando chamado o método IsPrimeNumber
@@ -114,10 +110,10 @@ namespace Deagglutination_Class
             }
         }
 
-        static Tuple<bool, string> ApplyDeagglutination(ulong a, ulong b)//método para verificar se trata de um numero primo de acordo com a hipótese da desaglutinação
+        static Tuple<bool, string> ApplyDeagglutination(double a, double b)//método para verificar se trata de um numero primo de acordo com a hipótese da desaglutinação
         {
-            ulong initalA = a;//Consersvando argumento 'a' original
-            ulong initialB = b;//Consersvando argumento 'b' original
+            double initalA = a;//Conservando argumento 'a' original
+            double initialB = b;//Consesvando argumento 'b' original
             //Console.WriteLine($"{a}   {b}");
             while (a != 0 && a % b != 0 && a > b)//caso 'a' seja diferente de 0, a divisão entre 'a' e 'b' *GERE* 'restos' *E* 'a', seja maior que 'b'. Faça:
             {
@@ -126,9 +122,9 @@ namespace Deagglutination_Class
                 //Console.WriteLine($"{a}   {b}");
             }
             if (a != 0 && a % b == 0 && b != 1)//caso 'a' seja diferente de 0, a divisão entre 'a' e 'b' *NÃO GERE* 'restos' e 'b' seja diferente de 1
-                return new Tuple<bool, string>(false, b.ToString());//valor não é um número impar e possui divisor 'b'
+                return new Tuple<bool, string>(false, b.ToString());//valor não é um número primo e possui divisor 'b'
             else
-                return new Tuple<bool, string>(true, null);//valor é um número impar e não retornará divisores, pois, por regra, seus divisores serão 1 e valor original do argumento 'a'.
+                return new Tuple<bool, string>(true, null);//valor é um número primo e não retornará divisores, pois, por regra, seus divisores serão 1 e valor original do argumento 'a'.
         }
     }
 }
